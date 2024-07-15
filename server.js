@@ -47,7 +47,12 @@ const app = express();
 // middleware.
 app.use(json()); // it use to send json data in req,res 
 app.use(morgan('dev'))
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://deploy-mern-1whq.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true
+));
 app.use(express.static(path.join(__dirname, './client/build')))
 
 // all routes.
